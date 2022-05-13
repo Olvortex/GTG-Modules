@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# Module author: @Pharaonis
-
 import random, requests
 from .. import loader, utils
 
