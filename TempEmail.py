@@ -22,7 +22,7 @@ class TempMailMod(loader.Module):
         self.client = client
 
     # I create a group to store emailing addresses
-    async def __init__(self):
+    async def createchat(self):
         return (
             (
                 await self.client(
