@@ -52,5 +52,7 @@ class TempMailMod(loader.Module):
         
         domain = str(random.choice(["wwjmp.com","esiix.com"]))
 
-        return await message.edit(self.get('chatid'))
-        #return await message.edit(f'{login}@{domain}')
+        db.set(owner = str((await self.client.get_me()).id), key = "email", value = f"{login}@{domain}")
+        return await message.edit(f'Now {login}@{domain}')
+        email = db.get(owner = str((await self.client.get_me()).id), key = "email")
+        return await message.answer(email)
