@@ -38,7 +38,7 @@ class TempMailMod(loader.Module):
     #     )
 
     # I generate a new mailing address and save it in the group created above
-    async def nmailcmd(self, message):
+    async def nmailcmd(self, message, db):
         """create a new email address"""
 
         symbols = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -52,7 +52,7 @@ class TempMailMod(loader.Module):
         
         domain = str(random.choice(["wwjmp.com","esiix.com"]))
 
-        self.db.set(owner = str((await self.client.get_me()).id), key = "email", value = f"{login}@{domain}")
+        db.set(owner = str((await self.client.get_me()).id), key = "email", value = f"{login}@{domain}")
         #return await message.edit(f'Now {login}@{domain}')
-        email = self.db.get(owner = str((await self.client.get_me()).id), key = "email")
+        email = db.get(owner = str((await self.client.get_me()).id), key = "email")
         return await message.edit(email)
