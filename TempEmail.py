@@ -74,7 +74,7 @@ class TempMailMod(loader.Module):
     async def cemailcmd(self, message):
         """Check your current email for new letters"""
 
-        print(self.creategroup())
+        print(await self.creategroup())
 
 
 
