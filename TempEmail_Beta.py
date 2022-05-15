@@ -160,7 +160,7 @@ class TempMailMod(loader.Module):
 
         group_id = await self.get_db(key = 'emailchat')
         
-        await self.chat_check(group_id, message)
+        await self.chat_check(group_id = group_id, message = message)
 
     #     # Creating a group and getting its id
     #     self.set("group_id", (await self.creategroup()))
