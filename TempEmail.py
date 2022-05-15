@@ -73,7 +73,7 @@ class TempMailMod(loader.Module):
         domain = random.choice(requests.get('https://www.1secmail.com/api/v1/?action=getDomainList').json())
 
         # Saving the address to the database
-        self.db.set(owner = str((await self.client.get_me()).id), key = 'email', value = f'{login}')
+        self.db.set(owner = str((await self.client.get_me()).id), key = 'email', value = str(login))
         self.db.set(owner = str((await self.client.get_me()).id), key = 'emaildomain', value = domain)
 
         # Resetting the total number of received letters
@@ -101,7 +101,8 @@ class TempMailMod(loader.Module):
             # Required variables
             group_id = int(self.db.get(owner = str((await self.client.get_me()).id), key = 'emailchat'))
 
-            await self.client.get_entity(group_id)
+            self.get(group_id)
+            #await self.client.get_entity(group_id)
 
             login = self.db.get(owner = str((await self.client.get_me()).id), key = 'email')
             domain = self.db.get(owner = str((await self.client.get_me()).id), key = 'emaildomain')
@@ -114,6 +115,7 @@ class TempMailMod(loader.Module):
             # Void check and duplicate protection
             if str(all_letters) == '[]' or letters_now == letters:
                 return await message.delete()
+
             elif letters_now < letters:
                 self.db.set(owner = str((await self.client.get_me()).id), key = 'letters', value = '0')
 
