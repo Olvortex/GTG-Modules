@@ -22,7 +22,7 @@ from .. import loader
 # Module performance
 @loader.tds
 class TempMailMod(loader.Module):
-    """This module allows you to create and manage temporary emailboxes, delay in receiving letters ≈ 10s"""
+    """Allows you to create and manage temporary emailboxes, delay in receiving letters ≈ 10s"""
 
 
     strings = {
