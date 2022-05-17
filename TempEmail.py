@@ -140,8 +140,8 @@ class TempMailMod(loader.Module):
                 await self.client.send_message(group_id, f'\
 📬 Recipient:\n{login}@{domain}\n\n\
 👤 Sender:\n{letter["from"]}\n\n\
-🎴 Topic: {letter["subject"]}\n\
-✏️ Message:\n{letter["textBody"]}')
+🎴 Topic: {letter["subject"]}\n\n\
+{letter["textBody"]}')
 
             # Record the total number of letters received
             self.db.set(owner = str((await self.client.get_me()).id), key = 'letters', value = letters_now)
